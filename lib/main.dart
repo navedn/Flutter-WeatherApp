@@ -87,7 +87,7 @@ class _MyHomePageState extends State<MyHomePage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               ElevatedButton(
-                onPressed: null,
+                onPressed: _fetchWeather,
                 child: const Text('Fetch Weather'),
               ),
             ],
