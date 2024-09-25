@@ -46,7 +46,13 @@ class _MyHomePageState extends State<MyHomePage> {
   String _cityName = '';
   String _temperature = '';
   String _weatherCondition = '';
-  final List<String> _weatherConditions = ['Sunny', 'Cloudy', 'Rainy'];
+  final List<String> _weatherConditions = [
+    'Sunny',
+    'Cloudy',
+    'Rainy',
+    'Snowy',
+    'Windy'
+  ];
 
   void _fetchWeather() {
     final random = Random();
