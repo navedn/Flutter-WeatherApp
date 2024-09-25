@@ -1,3 +1,4 @@
+import 'dart:math';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -45,13 +46,19 @@ class _MyHomePageState extends State<MyHomePage> {
   String _cityName = '';
   String _temperature = '';
   String _weatherCondition = '';
+  final List<String> _weatherConditions = ['Sunny', 'Cloudy', 'Rainy'];
 
   void _fetchWeather() {
+    final random = Random();
+    int temp = 15 + random.nextInt(16);
+    String condition =
+        _weatherConditions[random.nextInt(_weatherConditions.length)];
+
     // Simulate fetching weather info
     setState(() {
       _cityName = _cityController.text;
-      _temperature = '25°C'; // Example temperature
-      _weatherCondition = 'Sunny'; // Example condition
+      _temperature = '$temp°C'; // Example temperature
+      _weatherCondition = condition; // Example condition
     });
   }
 
@@ -80,7 +87,7 @@ class _MyHomePageState extends State<MyHomePage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               ElevatedButton(
-                onPressed: _fetchWeather,
+                onPressed: null,
                 child: const Text('Fetch Weather'),
               ),
             ],
