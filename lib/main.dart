@@ -41,6 +41,20 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  final TextEditingController _cityController = TextEditingController();
+  String _cityName = '';
+  String _temperature = '';
+  String _weatherCondition = '';
+
+  void _fetchWeather() {
+    // Simulate fetching weather info
+    setState(() {
+      _cityName = _cityController.text;
+      _temperature = '25°C'; // Example temperature
+      _weatherCondition = 'Sunny'; // Example condition
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,31 +63,42 @@ class _MyHomePageState extends State<MyHomePage> {
         title: const Text('Weather Info App'),
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Center(
-            child: Container(
-              child: Text(
-                'What',
-                style: const TextStyle(
-                  fontSize: 50.0,
-                  color: Colors.black,
-                ),
+          const SizedBox(height: 20.0),
+          SizedBox(
+            width: 500, // Set the width you want
+            child: TextField(
+              controller: _cityController,
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: 'Enter City Name',
               ),
             ),
           ),
+          const SizedBox(height: 20.0),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               ElevatedButton(
-                child: const Text('Start'),
-                onPressed: () {
-                  setState(() {
-                    ;
-                  });
-                },
+                onPressed: _fetchWeather,
+                child: const Text('Fetch Weather'),
               ),
             ],
+          ),
+          const SizedBox(height: 20.0),
+          Text(
+            'City: $_cityName',
+            style: const TextStyle(fontSize: 20.0),
+          ),
+          const SizedBox(height: 10.0),
+          Text(
+            'Temperature: $_temperature',
+            style: const TextStyle(fontSize: 20.0),
+          ),
+          const SizedBox(height: 10.0),
+          Text(
+            'Condition: $_weatherCondition',
+            style: const TextStyle(fontSize: 20.0),
           ),
         ],
       ),
